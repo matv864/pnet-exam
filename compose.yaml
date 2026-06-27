@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: mydb
+      MARIADB_USER: myuser
+      MARIADB_PASSWORD: mypassword
+    ports:
+      - '3306:3306'
+  
+  site:
+    build: .
+    container_name: site
+    environment:
+      DB_HOST: mariadb
+    ports:
+      - '8000:8000'
