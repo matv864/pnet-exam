@@ -1,3 +1,7 @@
+<?php
+ob_start();
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,5 +61,6 @@ if (isset($_POST["submit"])){
     }
 }
 
+ob_end_flush();
 mysqli_close($link);
 ?>

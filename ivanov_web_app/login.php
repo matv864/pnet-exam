@@ -1,3 +1,13 @@
+<?php
+
+ob_start();
+
+if (isset($_COOKIE["User"])){
+    header("Location: /index.php");
+    exit();
+}
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,10 +52,6 @@
 // ini_set('display_errors', 1);
 require_once("db.php");
 
-if (isset($_COOKIE["User"])){
-    header("Location: /index.php");
-    exit();
-}
 
 if (isset($_POST["submit"])) {
     $login = $_POST["login"];
@@ -65,5 +71,6 @@ if (isset($_POST["submit"])) {
 
 }
 
+ob_end_flush();
 mysqli_close($link);
 ?>
